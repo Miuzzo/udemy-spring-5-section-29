@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    
+<!--     <context:property-placeholder location="classpath:persistence-mysql.properties"/> -->
+    <!-- Q: How to create dataSource bean without c3p0 ? -->
+<!--     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close"> -->
+<!--         <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/> -->
+<!--         <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/web_customer_tracker?useSSL=false&amp;serverTimezone=UTC"/> -->
+<!--         <property name="user" value="springstudent"/> -->
+<!--         <property name="password" value="springstudent"/> -->
+<!--         these are connection pool properties for C3P0 -->
+<!--         <property name="initialPoolSize" value="5"/> -->
+<!-- 		<property name="minPoolSize" value="5" /> -->
+<!-- 		<property name="maxPoolSize" value="20" /> -->
+<!-- 		<property name="maxIdleTime" value="30000" /> -->
+<!--     </bean> -->
+
+   <bean id="dataSource" 
+			class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close"> 
+      <!--	tomcat version
+      		class="org.apache.tomcat.dbcp.dbcp2.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/web_customer_tracker?useSSL=false&amp;serverTimezone=UTC"/>
+        <property name="username" value="springstudent"/>
+        <property name="password" value="springstudent"/>-->
+        <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/web_customer_tracker?useSSL=false&amp;serverTimezone=UTC"/>
+        <property name="user" value="springstudent"/>
+        <property name="password" value="springstudent"/>
+        <property name="initialPoolSize" value="5"/>
+		<property name="minPoolSize" value="5" />
+		<property name="maxPoolSize" value="20" />
+		<property name="maxIdleTime" value="30000" /> 
+    </bean>
+    
+    <bean id="sessionFactory"
+      class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource"
+          ref="dataSource"/>
+        <property name="packagesToScan"
+          value="com.luv2code.springdemo.entity"/>
+        <property name="hibernateProperties">
+            <props>
+		      <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+		      <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+    </bean>
+ 
+    <bean id="txManager"
+      class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
+    <bean id="customerDao" class="com.luv2code.springdemo.dao.CustomerDaoImp">
+    </bean>
+    
+</beans>

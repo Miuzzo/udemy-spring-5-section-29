@@ -1,0 +1,39 @@
+1 - Il package dove risiede @SpringBootApplication deve finire con il primo prefisso rispetto i restanti package:
+	[OK] com.luv2code.springdemo
+	[NO] com.luv2code.springdemo.startapp
+		 @SpringBootApplication
+	com.luv2code.springdemo.controller
+
+	ATTENZIONE: con	com.luv2code.springdemo.startap	NON verranno automaticamente caricati i 
+	controller e tutte le altre risorse in com.luv2code.springdemo.controller
+	
+2 - Il nome dell'entità nella query deve avere prima lettere maiuscola per mysql:
+
+	[OK] session.createQuery("from Customer", ... 
+	[NO] session.createQuery("from customer", ... 
+	
+3 - Differenza tra @Controller / @RestController / @RequestMapping / @GetMapping
+
+4 - Uso JPA invece che DAO impl.
+
+5 - @SpringBootApplication(exclude=HibernateJpaAutoConfiguration.class) perché?
+
+6 - Cerca gestione eccezione in jar per evitare crash applicazione: possibile? 
+	Oppure bisogna farlo girare con tomcat? In jar c'è tomcat embedded comunque.
+	
+7 - Use for c3p0 maven:
+		<dependency>
+		    <groupId>c3p0</groupId>					
+		    <artifactId>c3p0</artifactId>
+		    <version>0.9.1.2</version>
+		</dependency>
+		
+		<!-- 
+			BE CARREFULLY: dont' use com.mchange because generate: 
+			java.io.FileNotFoundException: C:\Users\david\.m2\repository\com\mchange\c3p0\0.9.5.5\mchange-commons-java-0.2.19.jar (Impossibile trovare il file specificato) 
+		-->
+		<dependency>
+		    <groupId>com.mchange</groupId>
+		    <artifactId>c3p0</artifactId>
+		    <version>0.9.5.5</version>
+		</dependency>
