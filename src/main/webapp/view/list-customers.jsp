@@ -4,6 +4,8 @@
 <html>
 	<head>
 		<title>L2C</title>
+		
+		<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 	</head>
 
 	<body>
