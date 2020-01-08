@@ -1,5 +1,5 @@
 # udemy-spring-5-section-29
-Course: Spring and Hibernate for beginners - Chad Darby<br>
+Course: Spring 5: Learn Spring 5 Core, AOP, Spring MVC, Spring Security, Spring REST, Spring Boot 2, Thymeleaf, JPA & Hibernate - Chad Darby<br>
 Mysql dump under path:src/main/resources/sql<br>
 
 1- What to change:
@@ -10,7 +10,7 @@ Mysql dump under path:src/main/resources/sql<br>
 			class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close"> 
         <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
         <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/web_customer_tracker?useSSL=false&amp;serverTimezone=UTC"/>
-        <property name="user" value=<b>"springstudent"<b>/>
+        <property name="user" value=<b>"springstudent"</b>/>
         <property name="password" value="springstudent"/>
         <property name="initialPoolSize" value="5"/>
 		<property name="minPoolSize" value="5" />
