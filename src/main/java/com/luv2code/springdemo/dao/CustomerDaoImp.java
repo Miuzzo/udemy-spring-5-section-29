@@ -2,8 +2,6 @@ package com.luv2code.springdemo.dao;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -19,7 +17,7 @@ public class CustomerDaoImp implements CustomerDao {
 	private SessionFactory sessionFactory;
 	
 	@Override
-	@Transactional
+//	@Transactional --> moved into service level
 	public List<Customer> getCustomers() {
 		
 		Session session = sessionFactory.getCurrentSession();
