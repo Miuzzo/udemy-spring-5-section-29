@@ -21,6 +21,15 @@ What to change: [********]
     </bean>
 ```
 
+How to install: 
+------------
+- Check if Eclipse contains Egit (https://www.eclipse.org/egit/)
+- Clone my .git repo (https://dzone.com/articles/tutorial-git-with-eclipse --> Read section: "Git Perspective and Repository Setup in Eclipse" and "Import from Git" )
+- Right key mouse on project -> Maven -> Update Projects...
+	- Check "Force update of Snapshots/Releases"
+	- Click OK
+- Right key mouse on project -> Run As -> Run on Server
+
 SW version:
 ------------
 - MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
