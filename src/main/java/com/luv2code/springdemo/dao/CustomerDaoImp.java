@@ -21,9 +21,17 @@ public class CustomerDaoImp implements CustomerDao {
 	public List<Customer> getCustomers() {
 		
 		Session session = sessionFactory.getCurrentSession();
-		Query<Customer> cQuery = session.createQuery("from Customer", Customer.class);
+		//add sort by lastName
+		Query<Customer> cQuery = session.createQuery("from Customer order by lastName", Customer.class);
 		List<Customer> customers = cQuery.getResultList();
 		return customers;
+	}
+	
+	public void saveCustomer(Customer customer) {
+		//get current session
+		Session session = sessionFactory.getCurrentSession();
+		//save new record
+		session.save(customer);
 	}
 
 }
