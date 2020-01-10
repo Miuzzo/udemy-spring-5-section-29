@@ -18,6 +18,7 @@
 		<div id="container">
 			<h3>Save Customer</h3>
 			<form:form action="saveCustomer" modelAttribute="Customer" method="POST">
+				<form:hidden path="id" />
 				<table>
 					<tr>
 						<td><label>First Name</label></td>
