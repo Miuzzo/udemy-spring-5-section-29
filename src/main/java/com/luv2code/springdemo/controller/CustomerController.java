@@ -28,6 +28,13 @@ public class CustomerController {
 		theModel.addAttribute("Customers",theCustomers);
 		return "list-customers";
 	}
+	
+	@PostMapping("/list")
+	public String listCustomers(@RequestParam("lastNameSearch") String lastNameSearch, Model theModel) {
+		List<Customer> theCustomers = customerService.getCustomers(lastNameSearch);
+		theModel.addAttribute("Customers",theCustomers);
+		return "list-customers";
+	}
 
 	@GetMapping("/showFormForAdd")
 	public String showFormForAdd(Model theModel) {

@@ -54,4 +54,18 @@ public class CustomerDaoImp implements CustomerDao {
 		deleteQuery.executeUpdate();
 	}
 
+	@Override
+	public List<Customer> getCustomers(String lastName) {
+		Session session = sessionFactory.getCurrentSession();
+		Query<Customer> sQuery = null;
+		if (!lastName.isEmpty() && lastName.trim().length() > 0) {
+			sQuery = session.createQuery("from Customer where last_name like:lastName order by lastName", Customer.class);
+			sQuery.setParameter("lastName", "%"+lastName+"%");
+		} else {
+			sQuery = session.createQuery("from Customer order by lastName", Customer.class);
+		}
+		List<Customer> customers = sQuery.getResultList();
+		return customers;
+	}
+
 }

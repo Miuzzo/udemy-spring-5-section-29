@@ -18,6 +18,10 @@
 		<div id="container">
 			<div id="content">
 				<input type="button" value="Add Customer" onclick="window.location.href='showFormForAdd'; return false;" class="add-button">
+				<form:form method="post" action="${pageContext.request.contextPath}/customer/list" modelAttribite="lastNameSearch">
+					Search customer:<input type="text" id="lastNameSearch" name="lastNameSearch"/>
+					<input type="submit" value="Search" class="add-button" /></td>
+				</form:form>
 				<table>
 					<tr>
 						<th>&nbsp;</th>
