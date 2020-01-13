@@ -28,20 +28,24 @@
 					<tr>
 					<c:forEach var="tempCustomer" items="${Customers}">
 <!-- 						Construct an update link with customer id -->
-<%-- 						<c:url value="/customer/showFormForUpdate" var="updateURL"> --%>
-<%-- 						    <c:param name="customerId" value="${tempCustomer.id}" /> --%>
-<%-- 						</c:url> --%>
+							<c:url value="/customer/showFormForUpdate" var="updateURL">
+							    <c:param name="customerId" value="${tempCustomer.id}" />
+							</c:url>
+							<c:url value="/customer/deleteCustomer" var="deleteURL">
+							    <c:param name="customerId" value="${tempCustomer.id}" />
+							</c:url>
 							<tr>
-							<form:form method="post" action="${pageContext.request.contextPath}/customer/showFormForUpdate" modelAttribite="CustomerId">
+<%-- 							<form:form method="post" action="${pageContext.request.contextPath}/customer/showFormForUpdate" modelAttribite="CustomerId"> --%>
 								<td>
 									<input type="hidden" id="id" name="id" value="${tempCustomer.id}"/>
 								</td>
 								<td> ${tempCustomer.firstName} </td>
 								<td> ${tempCustomer.lastName} </td>
 								<td> ${tempCustomer.email} </td>
-<%-- 							<td> <a href="${updateURL}">Update</a></td> --%>
-								<td><input type="submit" value="Update"/></td>
-							</form:form>
+								<td> <a href="${updateURL}">Update</a>
+								|<a href="${deleteURL}" onclick="if(!confirm('Do you really want to cancel?')) return false;" >Delete</a></td>
+<!-- 							<td><input type="submit" value="Update"/></td> -->
+<%-- 							</form:form> --%>
 							</tr>
 					</c:forEach>
 				</table>
